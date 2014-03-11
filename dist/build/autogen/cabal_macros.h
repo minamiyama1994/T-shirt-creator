@@ -105,6 +105,13 @@
   (major1) == 1 && (major2) <  3 || \
   (major1) == 1 && (major2) == 3 && (minor) <= 1)
 
+/* package random-1.0.1.1 */
+#define VERSION_random "1.0.1.1"
+#define MIN_VERSION_random(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  0 || \
+  (major1) == 1 && (major2) == 0 && (minor) <= 1)
+
 /* package shakespeare-css-1.0.7.1 */
 #define VERSION_shakespeare_css "1.0.7.1"
 #define MIN_VERSION_shakespeare_css(major1,major2,minor) (\
