@@ -1,0 +1,1 @@
+function randomInt(){return Math.floor(random()*96)+32};$(function(){})

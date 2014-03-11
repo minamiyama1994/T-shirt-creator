@@ -1,0 +1,41 @@
+function randomInt(min,max)
+{
+	return Math.floor ( Math.random ( ) * ( max - min ) ) + min ;
+}
+function make_lang ( lang )
+{
+	var res = $("<span></span>");
+	var is_horizon = ( randomInt ( 0 , 2 ) == 0 ) ;
+	var font_size = randomInt ( 32 , 128 ) ;
+	var width = is_horizon ? Math.floor ( font_size * lang.length / 2 ) : font_size ;
+	var height = is_horizon ? font_size : Math.floor ( font_size * lang.length / 2 ) ;
+	var font = [ "serif" , "sans-serif" , "cursive" , "fantasy" , "monospace" ] [ randomInt ( 0 , 5 ) ] ;
+	var x = randomInt ( 0 , 512 - width ) ;
+	var y = randomInt ( 0 , 512 - height ) ;
+	var color = "rgba(" + randomInt ( 64 , 192 ) + "," + randomInt ( 64 , 192 ) + "," + randomInt ( 64 , 192 ) + "," + randomInt ( 64 , 128 ) + ")" ;
+	res.attr ( "style" , "position:absolute;" ) ;
+	res.attr ( "style" , res.attr ( "style" ) + "-webkit-writing-mode:" + ( is_horizon ? "horizontal-tb" : "vertical-rl" ) + ";" ) ;
+	res.attr ( "style" , res.attr ( "style" ) + "font-size:" + font_size + "px;" ) ;
+	res.attr ( "style" , res.attr ( "style" ) + "font-family:" + font + ";" ) ;
+	res.attr ( "style" , res.attr ( "style" ) + "left:" + x + "px;" ) ;
+	res.attr ( "style" , res.attr ( "style" ) + "top:" + y + "px;" ) ;
+	res.attr ( "style" , res.attr ( "style" ) + "color:" + color + ";" ) ;
+	res.text ( lang ) ;
+	return res ;
+}
+$(function()
+{
+	$.ajax({
+		"type" : "GET" ,
+		"success" : function(data,datatype)
+		{
+			for ( var i = 0 ; i < data.langs.length ; ++ i )
+			{
+				var lang = make_lang ( data.langs [ i ] ) ;
+				$("#canvas").attr("style" , "color:rgb(0,0,0)").append ( lang ) ;
+			}
+			return this ;
+		} ,
+		"url" : "http://b-world.org/langs"
+	});
+});

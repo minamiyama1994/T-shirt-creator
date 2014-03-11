@@ -1,0 +1,1 @@
+fromList [("templates/T.julius",fromList []),("templates/homepage.julius",fromList [DerefBranch (DerefIdent (Ident "toJSON")) (DerefIdent (Ident "aDomId"))]),("templates/homepage.lucius",fromList [DerefIdent (Ident "aDomId")])]
