@@ -1,0 +1,20 @@
+Default: &defaults
+  database: TS.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: TS_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: TS_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: TS_production.sqlite3
+  poolsize: 100
+  <<: *defaults
